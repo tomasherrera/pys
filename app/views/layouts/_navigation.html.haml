@@ -1,0 +1,33 @@
+-# navigation styled for Bootstrap 3.0
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'P&S Distribuciones - Sistema de Gestión Contable y Financiera', root_path, class: 'navbar-brand'
+      //= link_to 'Ventas', root_path, class: 'navbar-brand', data: { keybinding: 'v' }
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        = render 'layouts/navigation_links'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.name
+              %span.caret
+            - if user_signed_in?
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Ventas
+                %li
+                  %a{:href => "#"} Perfil
+                %li
+                  %a{:href => "#"} Configuración
+                %li.divider{:role => "separator"}
+                %li
+                  = link_to "Salir", destroy_user_session_path, method: :delete
+        - else
+          %li= link_to "Iniciar Sesión", new_user_session_path

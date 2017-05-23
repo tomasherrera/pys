@@ -48,6 +48,10 @@ GEM
       normalize-rails (>= 3.0)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
+    angular-rails-templates (1.0.2)
+      railties (>= 4.2, < 6)
+      sprockets (>= 3.0, < 5)
+      tilt
     arel (6.0.4)
     autoprefixer-rails (6.7.7.2)
       execjs
@@ -58,6 +62,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     bourbon (4.3.4)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -84,6 +91,8 @@ GEM
     devise-i18n (1.1.2)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     foreman (0.84.0)
       thor (~> 0.19.1)
     globalid (0.4.0)
@@ -125,6 +134,8 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    lodash-rails (4.17.4)
+      railties (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.5)
@@ -137,6 +148,7 @@ GEM
     minitest (5.10.2)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
+    mousetrap-rails (1.4.6)
     multi_json (1.12.1)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -210,9 +222,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -230,19 +239,24 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  angular-rails-templates
   better_errors
   binding_of_caller
+  bootstrap-sass
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
+  font-awesome-rails
   foreman
   haml-rails
   html2haml
   hub
   jbuilder (~> 2.0)
   jquery-rails
+  lodash-rails
+  mousetrap-rails
   pg
   pry-rails
   pry-rescue
@@ -251,7 +265,6 @@ DEPENDENCIES
   rails_layout
   sass-rails (~> 5.0)
   spring
-  turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

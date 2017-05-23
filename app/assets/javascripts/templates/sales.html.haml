@@ -1,0 +1,29 @@
+%ul.nav.nav-tabs{"style" => "margin-top: 5px;"}
+  %li{"ng-class" => "{active: tabSelected === 'inicio'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('inicio')"} 
+      %i.fa.fa-home
+      Inicio
+  %li{"ng-class" => "{active: tabSelected === 'facturacion'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('facturacion')"} 
+      %i.fa.fa-file-text
+      Facturación
+  %li{"ng-class" => "{active: tabSelected === 'recordatorios'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('recordatorios')"} 
+      %i.fa.fa-shopping-cart
+      Pedidos
+  %li{"ng-class" => "{active: tabSelected === 'inventario'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('inventario'); getItems();"} 
+      %i.fa.fa-database
+      Inventario
+  %li{"ng-class" => "{active: tabSelected === 'clientes'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('clientes'); getCustomers();"} 
+      %i.fa.fa-users
+      Clientes
+  %li{"ng-class" => "{active: tabSelected === 'retiros'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('retiros')"} 
+      %i.fa.fa-building
+      Proveedores  
+  %li{"ng-class" => "{active: tabSelected === 'estadisticas'}", :role => "presentation"}
+    %a.tab-cursor{"ng-click" => "selectTab('estadisticas')"} 
+      %i.fa.fa-folder
+      Cartera
