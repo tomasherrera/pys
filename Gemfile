@@ -45,3 +45,26 @@ group :development do
   gem 'spring'
 end
 
+
+gem 'administrate'
+gem 'bourbon'
+gem 'devise'
+gem 'devise-i18n'
+gem 'haml-rails'
+gem 'pg'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'foreman'
+  gem 'html2haml'
+  gem 'hub', :require=>nil
+  gem 'rails_apps_pages'
+  gem 'rails_layout'
+end
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-rescue'
+end
+
