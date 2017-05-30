@@ -16,6 +16,7 @@ gem 'lodash-rails'
 gem 'font-awesome-rails'
 gem 'mousetrap-rails'
 gem 'bootstrap-sass'
+gem 'html2haml'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

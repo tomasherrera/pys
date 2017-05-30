@@ -11,10 +11,10 @@
 
   
 
-  pysNowDataService.getItems = function ()
+  pysNowDataService.getClients = function ()
   {
-    var url = baseUrl + 'items.json';
-    return Restangular.oneUrl('items', url);
+    var url = baseUrl + 'clients.json';
+    return Restangular.oneUrl('clients', url);
 
   }
 

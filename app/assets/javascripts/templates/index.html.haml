@@ -1,4 +1,4 @@
-%ul.nav.nav-tabs{"style" => "margin-top: 5px;"}
+%ul.nav.nav-tabs.nav-justified{"style" => "margin-top: 5px;"}
   %li{"ng-class" => "{active: tabSelected === 'inicio'}", :role => "presentation"}
     %a.tab-cursor{"ng-click" => "selectTab('inicio')"} 
       %i.fa.fa-home
@@ -27,3 +27,5 @@
     %a.tab-cursor{"ng-click" => "selectTab('estadisticas')"} 
       %i.fa.fa-folder
       Cartera
+
+%ng-include{"ng-show" => "tabSelected === 'facturacion'", :src => "'partials/billing.html'"}

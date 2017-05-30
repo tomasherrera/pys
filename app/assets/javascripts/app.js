@@ -7,7 +7,7 @@
     
     $routeProvider
       .when('/', {
-        templateUrl: 'sales.html',
+        templateUrl: 'index.html',
         controller: 'SalesController'
       })
       .when('/clientes', {

@@ -1,0 +1,170 @@
+.row.fit-content{"style"=>"margin-bottom:10px; margin-left:-15px;"}
+  %button.btn.btn-primary.btn-sm#new-sale-button.no-round-corners{"style"=>"float:left", "data-toggle"=>"modal", "data-target"=>"#newBill", "ng-click"=>"getClients();"} 
+    %i.fa.fa-file-text
+    Nueva Factura
+  .text-left{"style"=>"float:left; padding-top:6px; margin-left:10px;"}  
+    %i.fa.fa-filter
+    Filtros Rápidos
+  .text-left{"style"=>"float:left; margin-left:10px;"}  
+    .btn-group{"aria-label" => "...", :role => "group"}
+      %button.btn.btn-danger.btn-sm{:type => "button"} En Mora
+      %button.btn.btn-warning.btn-sm{:type => "button"} Pendientes
+      %button.btn.btn-success.btn-sm{:type => "button"} Aprobadas
+%table.table.table-sm.table-bordered
+  %thead.thead-inverse
+    %tr
+      %th.text-center.col-sm-1 # Factura
+      %th.text-center.col-sm-2 Cliente
+      %th.text-center.col-sm-1 # Pedido
+      %th.text-center.col-sm-1 Creada Por
+      %th.text-center.col-sm-2 Plazo De Pago
+      %th.text-center.col-sm-1 Mora
+      %th.text-center.col-sm-2 Tiempo De Mora
+      %th.text-center.col-sm-1 Estado
+      %th.text-center.col-sm-3 Acciones
+  %tbody
+    %tr
+      %th.text-center{:scope => "row"} 0000001
+      %td Industrias Gillis
+      %td 0000134
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 15 días
+      %td No
+      %td 0 días
+      %td.orange.strong Pendiente
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000002
+      %td Umbrella Corporation
+      %td 0000137
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 4 Junio/2017
+      %td No
+      %td 0 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000003
+      %td.table-danger Hospital San José
+      %td 0000254
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td.red 27 Mayo/2017
+      %td.red Si
+      %td.red 2 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000001
+      %td Industrias Gillis
+      %td 0000134
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 15 días
+      %td No
+      %td 0 días
+      %td.orange.strong Pendiente
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000002
+      %td Umbrella Corporation
+      %td 0000137
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 4 Junio/2017
+      %td No
+      %td 0 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000003
+      %td.table-danger Hospital San José
+      %td 0000254
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td.red 27 Mayo/2017
+      %td.red Si
+      %td.red 2 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000001
+      %td Industrias Gillis
+      %td 0000134
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 15 días
+      %td No
+      %td 0 días
+      %td.orange.strong Pendiente
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000002
+      %td Umbrella Corporation
+      %td 0000137
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td 4 Junio/2017
+      %td No
+      %td 0 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+    %tr
+      %th.text-center{:scope => "row"} 0000003
+      %td.table-danger Hospital San José
+      %td 0000254
+      %td
+        %a{:href=>"#"} Jorge B.
+      %td.red 27 Mayo/2017
+      %td.red Si
+      %td.red 2 días
+      %td.green.strong Aprobada
+      %td.actions-cell
+        .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+          %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-eye
+          %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
+            %i.fa.fa-print
+%div{"ng-include" => "'modals/new_bill_modal.html'"}

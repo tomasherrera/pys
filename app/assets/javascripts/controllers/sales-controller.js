@@ -4,7 +4,7 @@
   var app = angular.module('pys');
 
   // HOME CONTROLLER
-  app.controller("SalesController", ['Restangular', '$scope', '$resource', '$route', '$routeParams', '$location', 'Flash', 'PysNowDataService', function(Restangular, $scope, $resource, $route, $routeParams, $location, Flash, StoreNowDataService) {
+  app.controller("SalesController", ['Restangular', '$scope', '$resource', '$route', '$routeParams', '$location', 'Flash', 'PysNowDataService', function(Restangular, $scope, $resource, $route, $routeParams, $location, Flash, PysNowDataService) {
     $scope.tabSelected = 'facturacion';
 
     $scope.pop = function(){
@@ -15,6 +15,14 @@
           return $('#popover_content_wrapper').html();
         }
       });
+    };
+
+    //DB
+
+    $scope.getClients = function(){
+      PysNowDataService.getClients().getList().then(function(response) {
+        $scope.clients = response.plain();
+      });  
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 

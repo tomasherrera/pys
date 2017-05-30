@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CUM: MyString
+  ref: MyString
+  name: MyString
+  lab: MyString
+  batch: MyString
+  exp_date: 2017-05-28 19:30:11
+  presentation: MyString
+
+two:
+  CUM: MyString
+  ref: MyString
+  name: MyString
+  lab: MyString
+  batch: MyString
+  exp_date: 2017-05-28 19:30:11
+  presentation: MyString
