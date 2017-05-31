@@ -18,6 +18,13 @@
 
   }
 
+  pysNowDataService.getClient = function (id)
+  {
+    var url = baseUrl + 'clients/' + id + '.json';
+    return Restangular.oneUrl('clients', url);
+
+  }
+
   pysNowDataService.getSales = function ()
   {
     var url = baseUrl + 'sales.json';

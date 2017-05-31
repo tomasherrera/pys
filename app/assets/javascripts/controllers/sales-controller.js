@@ -6,6 +6,18 @@
   // HOME CONTROLLER
   app.controller("SalesController", ['Restangular', '$scope', '$resource', '$route', '$routeParams', '$location', 'Flash', 'PysNowDataService', function(Restangular, $scope, $resource, $route, $routeParams, $location, Flash, PysNowDataService) {
     $scope.tabSelected = 'facturacion';
+    $scope.selectedClient = null;
+    $scope.isClientSelected = false;
+
+
+    $scope.selectClient = function(client_id){
+      $scope.getClient(client_id);
+    };
+
+    $scope.changeClient = function(){
+      $scope.selectedClient = null; 
+      $scope.isClientSelected = false;
+    };
 
     $scope.pop = function(){
       $('[data-toggle="popover"]').popover();
@@ -18,6 +30,12 @@
     };
 
     //DB
+    $scope.getClient = function(id){
+      PysNowDataService.getClient(id).get().then(function(response) {
+        $scope.selectedClient = response.plain()["client"];
+        $scope.isClientSelected = true;
+      });  
+    };
 
     $scope.getClients = function(){
       PysNowDataService.getClients().getList().then(function(response) {

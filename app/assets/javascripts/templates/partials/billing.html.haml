@@ -4,12 +4,12 @@
     Nueva Factura
   .text-left{"style"=>"float:left; padding-top:6px; margin-left:10px;"}  
     %i.fa.fa-filter
-    Filtros Rápidos
+    Filtros Rápidos:
   .text-left{"style"=>"float:left; margin-left:10px;"}  
     .btn-group{"aria-label" => "...", :role => "group"}
-      %button.btn.btn-danger.btn-sm{:type => "button"} En Mora
-      %button.btn.btn-warning.btn-sm{:type => "button"} Pendientes
-      %button.btn.btn-success.btn-sm{:type => "button"} Aprobadas
+      %button.btn.btn-danger.btn-sm.disabled{:type => "button"} En Mora
+      %button.btn.btn-warning.btn-sm.disabled{:type => "button"} Pendientes
+      %button.btn.btn-success.btn-sm.disabled{:type => "button"} Aprobadas
 %table.table.table-sm.table-bordered
   %thead.thead-inverse
     %tr
