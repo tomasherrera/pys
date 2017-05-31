@@ -5,7 +5,9 @@
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} &times;
         %span
-          %h4.modal-title Nueva Factura
+          %h4.modal-title 
+            %i.fa.fa-file-text-o
+            Nueva Factura
       .modal-body
         %h5 Seleccionar cliente a facturar:
         .form-group{"ng-hide" => "isClientSelected"}
@@ -76,25 +78,63 @@
                 %strong
                   Ciudad: 
                 {{selectedClient.city}}
+          %h5 Pedidos recientes:
           / Table
-          %table.table
-            \...
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th.text-center.col-sm-2 # Pedido
+                %th.text-center.col-sm-3 Fecha de Ingreso
+                %th.text-center.col-sm-3 Ingresado por
+                %th.text-center.col-sm-2 Estado
+                %th.text-center.col-sm-2 Acciones
+            %tbody
+              %tr
+                %td 00882733
+                %td 27 Mayo/2017
+                %td Jorge Borrero
+                %td.orange Pendiente
+                %td.actions-cell
+                  .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+                    %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Ver"}
+                      %i.fa.fa-eye
+                    %button.btn.btn-warning.actions-btn.no-round-corners.disabled{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Facturar"}
+                      %i.fa.fa-file-text
+              %tr
+                %td 00872734
+                %td 24 Mayo/2017
+                %td Jorge Borrero
+                %td.green Autorizada
+                %td.actions-cell
+                  .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+                    %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Ver"}
+                      %i.fa.fa-eye
+                    %button.btn.btn-warning.actions-btn.no-round-corners{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Facturar"}
+                      %i.fa.fa-file-text
+              %tr
+                %td 00862711
+                %td 21 Mayo/2017
+                %td Jorge Borrero
+                %td.green Autorizada
+                %td.actions-cell
+                  .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+                    %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Ver"}
+                      %i.fa.fa-eye
+                    %button.btn.btn-warning.actions-btn.no-round-corners{:type => "button", "data-toggle" => "tooltip", "data-placement" => "top", :title => "Facturar"}
+                      %i.fa.fa-file-text
         %hr
         %h5 Método de Pago
         .btn-group.btn-group-sm{"aria-label" => "...", :role => "group"}
-          %button.btn.btn-warning{"ng-class" => "{active: selectedPayment === 'efectivo'}", "ng-click" => "selectPayment('efectivo')"} 
+          %button.btn.btn-warning{"ng-class" => "{active: selectedPayment === 'contado'}", "ng-click" => "selectPayment('contado')"} 
             %i.fa.fa-money 
             Contado
-          %button.btn.btn-warning{"ng-class" => "{active: selectedPayment === 'debito'}", "ng-click" => "selectPayment('debito')"} 
+          %button.btn.btn-warning{"ng-class" => "{active: selectedPayment === 'credito'}", "ng-click" => "selectPayment('credito')"} 
             %i.fa.fa-credit-card 
             Crédito
       .modal-footer
         %button.btn.btn-danger.no-round-corners{"data-dismiss" => "modal", :type => "button"} 
           %i.fa.fa-ban
           Cancelar
-        %button.btn.btn-info.no-round-corners{"ng-disabled" => "sale_items.length === 0", "ng-click" => "saveSale(sale_items, getTotal(), 'draft')", "data-dismiss" => "modal", :type => "button"} 
-          %i.fa.fa-eraser
-          Borrador
         %button.btn.btn-success.no-round-corners{"ng-disabled" => "sale_items.length === 0", "ng-click" => "saveSale(sale_items, getTotal(), 'completed'); search_customer = ''; search = ''", "data-dismiss" => "modal", :type => "button"} 
-          %i.fa.fa-print
-          Completar
+          %i.fa.fa-arrow-right
+          Continuar
