@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.2'
+ruby '2.3.4'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
@@ -16,7 +16,6 @@ gem 'lodash-rails'
 gem 'font-awesome-rails'
 gem 'mousetrap-rails'
 gem 'bootstrap-sass'
-gem 'html2haml'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
