@@ -8,10 +8,14 @@
     $scope.tabSelected = 'facturacion';
     $scope.selectedClient = null;
     $scope.isClientSelected = false;
-
+    $scope.selectedPayment = "credito";
 
     $scope.selectClient = function(client_id){
       $scope.getClient(client_id);
+    };
+
+    $scope.selectPayment = function(payment_type){
+      $scope.selectedPayment = payment_type; 
     };
 
     $scope.changeClient = function(){
