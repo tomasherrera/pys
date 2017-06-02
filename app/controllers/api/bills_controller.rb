@@ -2,7 +2,7 @@ class Api::BillsController < ApplicationController
   respond_to :json
 
   def index
-    @bills = Bill.all.order("created_at DESC")
+    @bills = Bill.all.includes(:client).order("created_at DESC")
   end
 
   def show
