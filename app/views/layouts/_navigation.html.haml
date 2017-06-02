@@ -16,12 +16,23 @@
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %i.fa.fa-envelope
+            %ul.dropdown-menu
+              %li
+                No hay mensajes nuevos
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %i.fa.fa-bell
+            %ul.dropdown-menu
+              %li
+                No hay notificaciones nuevas
+
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               = current_user.name
               %span.caret
             - if user_signed_in?
               %ul.dropdown-menu
-                %li
-                  %a{:href => "#"} Ventas
                 %li
                   %a{:href => "#"} Perfil
                 %li
