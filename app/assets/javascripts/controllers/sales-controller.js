@@ -9,6 +9,8 @@
     $scope.selectedClient = null;
     $scope.isClientSelected = false;
     $scope.selectedPayment = "credito";
+    $scope.bill_creation = false;
+    $scope.showClient = true;
 
     $scope.selectClient = function(client_id){
       $scope.getClient(client_id);
@@ -21,6 +23,19 @@
     $scope.changeClient = function(){
       $scope.selectedClient = null; 
       $scope.isClientSelected = false;
+    };
+
+    $scope.startBillCreation = function(){
+      $scope.bill_creation = true;
+    };
+
+    $scope.showOrHideClient = function(){
+      $scope.showClient = !$scope.showClient;
+    };
+
+    $scope.cancelBillCreation = function(){
+      $scope.getBills();
+      $scope.bill_creation = false;
     };
 
     $scope.pop = function(){
@@ -47,6 +62,19 @@
       });  
     };
 
+    $scope.getBills = function(){
+      PysNowDataService.getBills().getList().then(function(response) {
+        $scope.bills = response.plain();
+      });  
+    };
+
+    $scope.saveBillDraft = function(){
+      $scope.bill = {client_id:$scope.selectedClient.id, status:"Borrador", payment_form: $scope.selectedPayment};
+      PysNowDataService.saveBill($scope.bill).then(function(response) {
+          $scope.draft_bill = response.bill;
+      });
+    };
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     //TABS
     $scope.selectTab = function(tab){
@@ -66,6 +94,7 @@
     };
     // Call basic functions
     $scope.assignKeys();
+    $scope.getBills();
   }]);//END OF HEADER CONTROLLER
 
 }());

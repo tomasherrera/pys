@@ -34,7 +34,7 @@
                   %button.btn.btn-primary.btn-xs.fill-cell-btn{"ng-click" => "selectClient(client.id);"} 
                     %i.fa.fa-arrow-right
                     Seleccionar
-        .panel.panel-default{"ng-show" => "isClientSelected"}
+        .panel.panel-info{"ng-show" => "isClientSelected"}
           / Default panel contents
           .panel-heading 
             %strong
@@ -135,6 +135,6 @@
         %button.btn.btn-danger.no-round-corners{"data-dismiss" => "modal", :type => "button"} 
           %i.fa.fa-ban
           Cancelar
-        %button.btn.btn-success.no-round-corners{"ng-disabled" => "sale_items.length === 0", "ng-click" => "saveSale(sale_items, getTotal(), 'completed'); search_customer = ''; search = ''", "data-dismiss" => "modal", :type => "button"} 
+        %button.btn.btn-success.no-round-corners{"ng-disabled" => "sale_items.length === 0", "ng-click" => "startBillCreation(); saveBillDraft();", "data-dismiss" => "modal", :type => "button"} 
           %i.fa.fa-arrow-right
           Continuar

@@ -7,4 +7,7 @@ json.client do
   json.email @client.email
   json.address @client.address
   json.city @client.city
+  json.payment_form @client.payment_form
+  json.date Date.today
+  json.deadline_date Date.today + @client.deadline_days.try(:days) 
 end

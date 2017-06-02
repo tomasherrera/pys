@@ -18,10 +18,24 @@
 
   }
 
+  pysNowDataService.getBills = function ()
+  {
+    var url = baseUrl + 'bills.json';
+    return Restangular.oneUrl('bills', url);
+
+  }
+
   pysNowDataService.getClient = function (id)
   {
     var url = baseUrl + 'clients/' + id + '.json';
     return Restangular.oneUrl('clients', url);
+
+  }
+
+  pysNowDataService.saveBill = function (bill)
+  {
+    var url = baseUrl + 'bills.json';
+    return Restangular.all(url).post( bill );
 
   }
 

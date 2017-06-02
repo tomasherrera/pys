@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530212602) do
+ActiveRecord::Schema.define(version: 20170602190349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.datetime "due_date"
+    t.boolean  "past_due"
+    t.integer  "past_due_days"
+    t.string   "status"
+    t.integer  "total_due"
+    t.string   "payment_form"
+    t.string   "bill_number"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "bills", ["client_id"], name: "index_bills_on_client_id", using: :btree
+  add_index "bills", ["order_id"], name: "index_bills_on_order_id", using: :btree
+  add_index "bills", ["user_id"], name: "index_bills_on_user_id", using: :btree
 
   create_table "client_contacts", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170530212602) do
     t.integer  "main_contact_id"
     t.string   "nit",             default: "", null: false
     t.string   "city"
+    t.string   "payment_form"
+    t.integer  "deadline_days"
   end
 
   create_table "items", force: :cascade do |t|
@@ -51,6 +72,22 @@ ActiveRecord::Schema.define(version: 20170530212602) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "order_number"
+    t.datetime "entry_date"
+    t.string   "status"
+    t.string   "observations"
+    t.integer  "user_id"
+    t.integer  "auth_user_id"
+    t.datetime "dispatch_date"
+    t.integer  "client_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,5 +109,10 @@ ActiveRecord::Schema.define(version: 20170530212602) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bills", "clients"
+  add_foreign_key "bills", "orders"
+  add_foreign_key "bills", "users"
   add_foreign_key "client_contacts", "clients"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "users"
 end

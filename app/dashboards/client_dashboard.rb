@@ -20,6 +20,8 @@ class ClientDashboard < Administrate::BaseDashboard
     main_contact_id: Field::Number,
     nit: Field::String,
     city: Field::String,
+    payment_form: Field::String,
+    deadline_days: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,6 +34,8 @@ class ClientDashboard < Administrate::BaseDashboard
     :client_contacts,
     :id,
     :address,
+    :payment_form,
+    :deadline_days,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -49,6 +53,8 @@ class ClientDashboard < Administrate::BaseDashboard
     :main_contact_id,
     :nit,
     :city,
+    :payment_form,
+    :deadline_days,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -64,6 +70,8 @@ class ClientDashboard < Administrate::BaseDashboard
     :main_contact_id,
     :nit,
     :city,
+    :payment_form,
+    :deadline_days,
   ].freeze
 
   # Overwrite this method to customize how clients are displayed

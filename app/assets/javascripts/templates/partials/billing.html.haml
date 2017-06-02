@@ -1,4 +1,4 @@
-.row.fit-content{"style"=>"margin-bottom:10px; margin-left:-15px;"}
+.row.fit-content{"style"=>"margin-bottom:10px; margin-left:-15px;", "ng-hide" => "bill_creation"}
   %button.btn.btn-primary.btn-sm#new-sale-button.no-round-corners{"style"=>"float:left", "data-toggle"=>"modal", "data-target"=>"#newBill", "ng-click"=>"getClients();"} 
     %i.fa.fa-file-text
     Nueva Factura
@@ -10,7 +10,9 @@
       %button.btn.btn-danger.btn-sm.disabled{:type => "button"} En Mora
       %button.btn.btn-warning.btn-sm.disabled{:type => "button"} Pendientes
       %button.btn.btn-success.btn-sm.disabled{:type => "button"} Aprobadas
-.row.fit-content
+.row.fit-content.well{"ng-hide" => "bill_creation || bills.length > 0"}
+  No hay facturas aún.
+.row.fit-content{"ng-hide" => "bill_creation || bills.length == 0"}
   %table.table.table-sm.table-bordered
     %thead.thead-inverse
       %tr
@@ -24,148 +26,106 @@
         %th.text-center.col-sm-1 Estado
         %th.text-center.col-sm-3 Acciones
     %tbody
-      %tr
-        %th.text-center{:scope => "row"} 0000001
-        %td Industrias Gillis
-        %td 0000134
+      %tr{"ng-repeat"=>"bill in bills"}
+        %th.text-center{:scope => "row"} {{bill.bill_number}}
+        %td {{bill.client_name}}
+        %td {{bill.order_number}}
         %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 15 días
-        %td No
-        %td 0 días
-        %td.orange.strong Pendiente
+          %a{:href=>""} {{bill.user}}
+        %td {{bill.due_date}}
+        %td {{bill.past_due}}
+        %td {{bill.past_due_days}}
+        %td {{bill.status}}
         %td.actions-cell
           .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
             %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
               %i.fa.fa-eye
             %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
               %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000002
-        %td Umbrella Corporation
-        %td 0000137
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 4 Junio/2017
-        %td No
-        %td 0 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000003
-        %td.table-danger Hospital San José
-        %td 0000254
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td.red 27 Mayo/2017
-        %td.red Si
-        %td.red 2 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000001
-        %td Industrias Gillis
-        %td 0000134
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 15 días
-        %td No
-        %td 0 días
-        %td.orange.strong Pendiente
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000002
-        %td Umbrella Corporation
-        %td 0000137
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 4 Junio/2017
-        %td No
-        %td 0 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000003
-        %td.table-danger Hospital San José
-        %td 0000254
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td.red 27 Mayo/2017
-        %td.red Si
-        %td.red 2 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000001
-        %td Industrias Gillis
-        %td 0000134
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 15 días
-        %td No
-        %td 0 días
-        %td.orange.strong Pendiente
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000002
-        %td Umbrella Corporation
-        %td 0000137
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td 4 Junio/2017
-        %td No
-        %td 0 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
-      %tr
-        %th.text-center{:scope => "row"} 0000003
-        %td.table-danger Hospital San José
-        %td 0000254
-        %td
-          %a{:href=>"#"} Jorge Borrero
-        %td.red 27 Mayo/2017
-        %td.red Si
-        %td.red 2 días
-        %td.green.strong Aprobada
-        %td.actions-cell
-          .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-            %button.btn.btn-primary.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-eye
-            %button.btn.btn-success.actions-btn.no-round-corners{:type => "button"}
-              %i.fa.fa-print
+      
+.row{"style"=>"margin-right:0px; margin-left: 0px;","ng-show" => "bill_creation"}
+  .row{"style"=>"margin-top:10px;"}
+    .col-md-4.text-left
+      %button.btn.btn-danger.btn-sm{"ng-click" => "cancelBillCreation();"}
+        %i.fa.fa-times
+        Cancelar
+    .col-md-4
+      %h4 
+        %i.fa.fa-file-text-o
+        Nueva Factura N° {{draft_bill.bill_number}}
+    .col-md-4
+  .row.fit-content
+    .panel.panel-info{style: "margin-bottom: 0px;"}
+      / Default panel contents
+      .panel-heading 
+        .row
+          .col-md-4.text-left
+            %a{href: "", "ng-show" => "showBillInfo", "ng-click" => "showOrHideBillInfo();"}
+              %i.fa.fa-arrow-down
+            %a{href: "", "ng-hide" => "showBillInfo", "ng-click" => "showOrHideBillInfo();"}
+              %i.fa.fa-arrow-right
+            %strong
+              Datos de la Factura
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th.text-center Forma de Pago
+            %th.text-center Fecha de Factura
+            %th.text-center Fecha de Vencimiento
+            %th.text-center Factura de Venta N°
+        %tbody
+          %tr
+            %td {{selectedPayment | uppercase}}
+            %td {{selectedClient.date | date:'dd/MM/yyyy' }}
+            %td {{selectedClient.deadline_date | date:'dd/MM/yyyy' }}
+            %td {{draft_bill.bill_number}}
+    .panel.panel-info{"ng-show" => "isClientSelected"}
+      / Default panel contents
+      .panel-heading 
+        .row
+          .col-md-4.text-left
+            %a{href: "", "ng-show" => "showClient", "ng-click" => "showOrHideClient();"}
+              %i.fa.fa-arrow-down
+            %a{href: "", "ng-hide" => "showClient", "ng-click" => "showOrHideClient();"}
+              %i.fa.fa-arrow-right
+            %strong
+              Cliente: {{selectedClient.business_name}} 
+            %span
+              %small
+                %a{href: "", "ng-click" => "changeClient()"}
+                  Cambiar
+      .panel-body{"ng-show" => "showClient"}
+        .row
+          .col-md-4.text-left
+            %i.fa.fa-id-card            
+            %strong
+              NIT: 
+            {{selectedClient.nit}}
+          .col-md-4.text-left
+            %i.fa.fa-phone
+            %strong
+              Teléfono: 
+            {{selectedClient.phone}}
+          .col-md-4.text-left
+            %i.fa.fa-map-marker
+            %strong
+              Dirección: 
+            {{selectedClient.address}}
+        .row
+          .col-md-4.text-left
+            %i.fa.fa-location-arrow
+            %strong
+              Ciudad: 
+            {{selectedClient.city}}
+          .col-md-4.text-left
+            %i.fa.fa-user
+            %strong
+              Contacto Principal: 
+            %a{href: ""}
+              {{selectedClient.main_contact_name}}        
+          .col-md-4.text-left         
+            %i.fa.fa-envelope
+            %strong
+              Email: 
+            {{selectedClient.email}}
 %div{"ng-include" => "'modals/new_bill_modal.html'"}

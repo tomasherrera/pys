@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: 
+  order_id: 
+  user_id: 
+  due_date: 2017-06-02 04:05:33
+  past_due: false
+  past_due_days: 1
+  status: MyString
+  total_due: 1
+  payment_form: MyString
+  bill_number: MyString
+
+two:
+  client_id: 
+  order_id: 
+  user_id: 
+  due_date: 2017-06-02 04:05:33
+  past_due: false
+  past_due_days: 1
+  status: MyString
+  total_due: 1
+  payment_form: MyString
+  bill_number: MyString
