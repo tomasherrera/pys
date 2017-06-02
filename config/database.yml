@@ -57,5 +57,3 @@ production:
   database: pys_production
   pool:     5
   username: postgres
-  password: holahola
-  template: template0
