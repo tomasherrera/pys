@@ -2,10 +2,10 @@ class Api::ClientsController < ApplicationController
   respond_to :json
 
   def index
-    @clients = Client.all.includes(:client_contacts)
+    @clients = Client.includes(:main_contact).all
   end
 
   def show
-    @client = Client.find(params[:id])
+    @client = Client.includes(:client_contacts).find(params[:id])
   end
 end

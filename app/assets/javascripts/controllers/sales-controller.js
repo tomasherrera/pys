@@ -4,13 +4,16 @@
   var app = angular.module('pys');
 
   // HOME CONTROLLER
-  app.controller("SalesController", ['Restangular', '$scope', '$resource', '$route', '$routeParams', '$location', 'Flash', 'PysNowDataService', function(Restangular, $scope, $resource, $route, $routeParams, $location, Flash, PysNowDataService) {
+  app.controller("SalesController", ['Restangular', '$scope', '$interval', '$resource', '$route', '$routeParams', '$location', 'Flash', 'PysNowDataService', function(Restangular, $scope, $interval, $resource, $route, $routeParams, $location, Flash, PysNowDataService) {
     $scope.tabSelected = 'facturacion';
     $scope.selectedClient = null;
     $scope.isClientSelected = false;
     $scope.selectedPayment = "credito";
     $scope.bill_creation = false;
     $scope.showClient = true;
+    //$interval(function(){
+    //  $scope.getBills();
+    //},3000);
 
     $scope.selectClient = function(client_id){
       $scope.getClient(client_id);

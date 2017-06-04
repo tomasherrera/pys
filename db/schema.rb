@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602190349) do
+ActiveRecord::Schema.define(version: 20170604232142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "batch_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.string   "batch"
+    t.integer  "quantity"
+    t.datetime "exp_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bill_batch_items", force: :cascade do |t|
+    t.integer  "bill_id"
+    t.integer  "batch_item_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "bill_batch_items", ["batch_item_id"], name: "index_bill_batch_items_on_batch_item_id", using: :btree
+  add_index "bill_batch_items", ["bill_id"], name: "index_bill_batch_items_on_bill_id", using: :btree
 
   create_table "bills", force: :cascade do |t|
     t.integer  "client_id"
@@ -62,15 +81,16 @@ ActiveRecord::Schema.define(version: 20170602190349) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "CUM",          default: "n/a",                 null: false
-    t.string   "ref",          default: "n/a",                 null: false
-    t.string   "name",         default: "n/a",                 null: false
-    t.string   "lab",          default: "n/a",                 null: false
-    t.string   "batch",        default: "n/a",                 null: false
-    t.datetime "exp_date",     default: '2017-05-29 00:35:03', null: false
-    t.string   "presentation", default: "n/a",                 null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.string   "CUM",                                  default: "n/a",                 null: false
+    t.string   "ref",                                  default: "n/a",                 null: false
+    t.string   "name",                                 default: "n/a",                 null: false
+    t.string   "lab",                                  default: "n/a",                 null: false
+    t.datetime "exp_date",                             default: '2017-05-29 00:35:03', null: false
+    t.string   "presentation",                         default: "n/a",                 null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
+    t.decimal  "price",        precision: 8, scale: 2
+    t.boolean  "vat",                                  default: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -109,6 +129,8 @@ ActiveRecord::Schema.define(version: 20170602190349) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bill_batch_items", "batch_items"
+  add_foreign_key "bill_batch_items", "bills"
   add_foreign_key "bills", "clients"
   add_foreign_key "bills", "orders"
   add_foreign_key "bills", "users"
