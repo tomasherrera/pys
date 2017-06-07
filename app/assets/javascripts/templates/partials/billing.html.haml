@@ -55,7 +55,7 @@
         Nueva Factura N° {{draft_bill.bill_number}}
     .col-md-4
   .row.fit-content
-    .panel.panel-info{style: "margin-bottom: 0px;"}
+    .panel.panel-info.bottomless
       / Default panel contents
       .panel-heading 
         .row
@@ -79,7 +79,7 @@
             %td {{selectedClient.date | date:'dd/MM/yyyy' }}
             %td {{selectedClient.deadline_date | date:'dd/MM/yyyy' }}
             %td {{draft_bill.bill_number}}
-    .panel.panel-info{"ng-show" => "isClientSelected"}
+    .panel.panel-info.bottomless{"ng-show" => "isClientSelected"}
       / Default panel contents
       .panel-heading 
         .row
@@ -128,4 +128,51 @@
             %strong
               Email: 
             {{selectedClient.email}}
+    .panel.panel-info.bottomless
+      / Default panel contents
+      .panel-heading 
+        .row
+          .col-md-4.text-left
+            %i.fa.fa-shopping-cart
+            %strong
+              Agregar Articulos 
+      .panel-body.bottomless-padding{style: "padding-top:4px !important;"}
+        .row.fit-content.add-items-search{style: "margin-top:5px;"}
+          .form-group.bottomless
+            %label.sr-only{:for => "search-items"} Buscar
+            .input-group
+              .input-group-addon
+                %i.fa.fa-search
+              %input#search-items.form-control{"ng-model"=>"search_items", :placeholder => "Ingrese CUM, referencia, nombre, laboratorio o lote...", :type => "text"}
+            .text-center{"ng-if"=>"search_items"}
+              %h5 Resultados de la Búsqueda
+      %table.table.table-hover{"ng-if"=>"search_items"}
+        %thead
+          %tr
+            %th.text-center CUM
+            %th.text-center Referencia
+            %th.text-center Nombre
+            %th.text-center Laboratorio
+            %th.text-center Presentación
+            %th.text-center Precio
+            %th.text-center IVA
+            %th.text-center INVIMA
+            %th.text-center Cantidad
+            %th.text-center Acciones
+        %tbody
+          %tr{"ng-repeat" => "item in items | filter:search_items | limitTo:20"}
+            %td {{item.cum}}
+            %td {{item.ref}}
+            %td {{item.name}}
+            %td {{item.lab}}
+            %td {{item.presentation}}
+            %td {{item.price | currency:"$":0}}
+            %td {{item.vat}} %
+            %td {{item.invima}}
+            %td {{item.quantity}}
+            %td.actions-cell
+              .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+                %button.btn.btn-primary.action-btn.no-round-corners{:type => "button", "ng-disabled" => "item.empty"}
+                  %i.fa.fa-shopping-cart
+                  Agregar
 %div{"ng-include" => "'modals/new_bill_modal.html'"}

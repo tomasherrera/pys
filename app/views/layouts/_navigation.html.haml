@@ -7,7 +7,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'P&S Distribuciones - Sistema de Gestión Contable y Financiera', root_path, class: 'navbar-brand'
+      = link_to root_path, class: 'navbar-brand' do
+        P&S Distribuciones - Sistema de Gestión Contable y Financiera
+        %small.red.strong
+          pre-alpha
       //= link_to 'Ventas', root_path, class: 'navbar-brand', data: { keybinding: 'v' }
     .collapse.navbar-collapse
       %ul.nav.navbar-nav

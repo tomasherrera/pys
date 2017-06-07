@@ -30,6 +30,7 @@
 
     $scope.startBillCreation = function(){
       $scope.bill_creation = true;
+      $scope.getItems();
     };
 
     $scope.showOrHideClient = function(){
@@ -62,6 +63,12 @@
     $scope.getClients = function(){
       PysNowDataService.getClients().getList().then(function(response) {
         $scope.clients = response.plain();
+      });  
+    };
+
+    $scope.getItems = function(){
+      PysNowDataService.getItems().getList().then(function(response) {
+        $scope.items = response.plain();
       });  
     };
 

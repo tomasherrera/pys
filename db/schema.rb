@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604232142) do
+ActiveRecord::Schema.define(version: 20170607064725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,16 +81,16 @@ ActiveRecord::Schema.define(version: 20170604232142) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "CUM",                                  default: "n/a",                 null: false
-    t.string   "ref",                                  default: "n/a",                 null: false
-    t.string   "name",                                 default: "n/a",                 null: false
-    t.string   "lab",                                  default: "n/a",                 null: false
-    t.datetime "exp_date",                             default: '2017-05-29 00:35:03', null: false
-    t.string   "presentation",                         default: "n/a",                 null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.string   "CUM",                                  default: "n/a", null: false
+    t.string   "ref",                                  default: "n/a", null: false
+    t.string   "name",                                 default: "n/a", null: false
+    t.string   "lab",                                  default: "n/a", null: false
+    t.string   "presentation",                         default: "n/a", null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.decimal  "price",        precision: 8, scale: 2
     t.boolean  "vat",                                  default: false
+    t.string   "invima"
   end
 
   create_table "orders", force: :cascade do |t|
