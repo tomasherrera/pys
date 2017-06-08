@@ -11,6 +11,7 @@
     $scope.selectedPayment = "credito";
     $scope.bill_creation = false;
     $scope.showClient = true;
+    $scope.selectedItemBill;
     //$interval(function(){
     //  $scope.getBills();
     //},3000);
@@ -21,6 +22,10 @@
 
     $scope.selectPayment = function(payment_type){
       $scope.selectedPayment = payment_type; 
+    };
+
+    $scope.selectItem = function(item){
+      $scope.selectedItemBill = item;
     };
 
     $scope.changeClient = function(){

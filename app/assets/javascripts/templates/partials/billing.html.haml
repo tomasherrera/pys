@@ -172,7 +172,48 @@
             %td {{item.quantity}}
             %td.actions-cell
               .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
-                %button.btn.btn-primary.action-btn.no-round-corners{:type => "button", "ng-disabled" => "item.empty"}
+                %button.btn.btn-primary.action-btn.no-round-corners{:type => "button", "ng-disabled" => "item.empty", "data-toggle"=>"modal", "data-target"=>"#addToBill", "ng-click" => "selectItem(item);"}
                   %i.fa.fa-shopping-cart
                   Agregar
+#addToBill.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title {{selectedItemBill.name}}
+      .modal-body
+        %form.form-inline
+          .row
+            .col-xs-5
+              .form-group
+                %label{:for => "exampleInputName2"} Cantidad:
+                %input#exampleInputName2.form-control.width-60{:placeholder => "{{selectedItemBill.quantity}}", :type => "number"}/
+            .col-xs-7  
+              .form-group
+                %label{:for => "exampleInputAmount"} Precio unid:
+                .input-group
+                  .input-group-addon $
+                  %input#exampleInputAmount.form-control.width-60{:placeholder => "Precio", :type => "number", :value => "{{selectedItemBill.price}}", :size => "7"}
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.text-center.col-md-5 Lote
+            %th.text-center.col-md-4 Vencimiento
+            %th.text-center.col-md-3 Cantidad
+        %tbody
+          %tr{"ng-repeat" => "batch in selectedItemBill.batches"}
+            %td {{batch.batch}}
+            %td {{batch.exp_date | date:'MM/yyyy'}}
+            %td {{batch.quantity}}
+            %td.actions-cell
+              .btn-group.btn-block.no-round-corners{"aria-label" => "...", :role => "group"}
+                %button.btn.btn-primary.action-btn.no-round-corners{:type => "button", "ng-disabled" => "item.empty", "data-toggle"=>"modal", "data-target"=>"#addToBill", "ng-click" => "selectItem(item);"}
+                  %i.fa.fa-check
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Cancelar
+        %button.btn.btn-primary{:type => "button", "ng-disabled" => true} Agregar a la factura
+    / /.modal-content
+  / /.modal-dialog
+/ /.modal
+
 %div{"ng-include" => "'modals/new_bill_modal.html'"}
